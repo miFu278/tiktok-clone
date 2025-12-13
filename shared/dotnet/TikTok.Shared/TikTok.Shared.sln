@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11222.16 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.Shared.Logging", "src\TikTok.Shared.Logging\TikTok.Shared.Logging.csproj", "{130BA093-73E1-4620-AAB5-0BEA604529B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.Shared.Common", "src\TikTok.Shared.Common\TikTok.Shared.Common.csproj", "{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.Shared.Security", "src\TikTok.Shared.Security\TikTok.Shared.Security.csproj", "{273783FB-7162-469F-913C-FC827FF02FAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,11 +33,40 @@ Global
 		{130BA093-73E1-4620-AAB5-0BEA604529B2}.Release|x64.Build.0 = Release|Any CPU
 		{130BA093-73E1-4620-AAB5-0BEA604529B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{130BA093-73E1-4620-AAB5-0BEA604529B2}.Release|x86.Build.0 = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Debug|x86.Build.0 = Debug|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|x64.Build.0 = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|x86.ActiveCfg = Release|Any CPU
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B}.Release|x86.Build.0 = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|x64.Build.0 = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Debug|x86.Build.0 = Debug|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|x64.ActiveCfg = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|x64.Build.0 = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|x86.ActiveCfg = Release|Any CPU
+		{273783FB-7162-469F-913C-FC827FF02FAC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{130BA093-73E1-4620-AAB5-0BEA604529B2} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{99EB58C3-468E-DF9F-21F9-4D695A11AE7B} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{273783FB-7162-469F-913C-FC827FF02FAC} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E26DD687-6AF9-4E91-BE42-8649CC9A06F2}
 	EndGlobalSection
 EndGlobal

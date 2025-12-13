@@ -1,11 +1,12 @@
 using System.Security.Cryptography;
 using System.Text;
+using TikTok.Shared.Common.Interfaces;
 
-namespace TikTok.Shared.Common.Helpers
+namespace TikTok.Shared.Common.Services
 {
-    public static class TokenGenerator
+    public class TokenGeneratorService : ITokenGenerator
     {
-        public static string GenerateRandomToken(int length = 32)
+        public string GenerateRandomToken(int length = 32)
         {
             if (length <= 0)
                 throw new ArgumentException("Length must be greater than 0.", nameof(length));
@@ -18,7 +19,7 @@ namespace TikTok.Shared.Common.Helpers
                 .Substring(0, length);
         }
 
-        public static string GenerateSecureToken(int byteSize = 32)
+        public string GenerateSecureToken(int byteSize = 32)
         {
             if (byteSize <= 0)
                 throw new ArgumentException("Byte size must be greater than 0.", nameof(byteSize));
@@ -27,7 +28,7 @@ namespace TikTok.Shared.Common.Helpers
             return Convert.ToBase64String(randomBytes);
         }
 
-        public static string GenerateNumericCode(int digits = 6)
+        public string GenerateNumericCode(int digits = 6)
         {
             if (digits <= 0 || digits > 10)
                 throw new ArgumentException("Digits must be between 1 and 10.", nameof(digits));
@@ -38,7 +39,7 @@ namespace TikTok.Shared.Common.Helpers
             return RandomNumberGenerator.GetInt32(min, max + 1).ToString();
         }
 
-        public static string GenerateUrlSafeToken(int length = 32)
+        public string GenerateUrlSafeToken(int length = 32)
         {
             if (length <= 0)
                 throw new ArgumentException("Length must be greater than 0.", nameof(length));
@@ -54,27 +55,27 @@ namespace TikTok.Shared.Common.Helpers
             return result.ToString();
         }
 
-        public static string GenerateRefreshToken()
+        public string GenerateRefreshToken()
         {
             return GenerateSecureToken(64);
         }
 
-        public static string GenerateVerificationToken()
+        public string GenerateVerificationToken()
         {
             return GenerateUrlSafeToken(48);
         }
 
-        public static string GenerateResetPasswordToken()
+        public string GenerateResetPasswordToken()
         {
             return GenerateUrlSafeToken(48);
         }
 
-        public static Guid GenerateGuid()
+        public Guid GenerateGuid()
         {
             return Guid.NewGuid();
         }
 
-        public static string GenerateShortId(int length = 8)
+        public string GenerateShortId(int length = 8)
         {
             const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
             var result = new StringBuilder(length);

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\shared\dotnet\TikTok.Shared\src\TikTok.Shared.Common\TikTok.Shared.Common.csproj" />
+    <ProjectReference Include="..\..\..\..\..\shared\dotnet\TikTok.Shared\src\TikTok.Shared.Security\TikTok.Shared.Security.csproj" />
   </ItemGroup>
 
 </Project>

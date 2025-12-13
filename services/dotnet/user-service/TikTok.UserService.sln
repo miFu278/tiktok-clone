@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.UserService.API", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.Shared.Common", "..\..\..\shared\dotnet\TikTok.Shared\src\TikTok.Shared.Common\TikTok.Shared.Common.csproj", "{5F80A1B7-3C38-3DBD-24C2-2AC6DCAD609C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok.Shared.Security", "..\..\..\shared\dotnet\TikTok.Shared\src\TikTok.Shared.Security\TikTok.Shared.Security.csproj", "{D41ED609-7093-85D3-E798-6DA0607CA052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,18 @@ Global
 		{5F80A1B7-3C38-3DBD-24C2-2AC6DCAD609C}.Release|x64.Build.0 = Release|Any CPU
 		{5F80A1B7-3C38-3DBD-24C2-2AC6DCAD609C}.Release|x86.ActiveCfg = Release|Any CPU
 		{5F80A1B7-3C38-3DBD-24C2-2AC6DCAD609C}.Release|x86.Build.0 = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|x64.Build.0 = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Debug|x86.Build.0 = Debug|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|x64.ActiveCfg = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|x64.Build.0 = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|x86.ActiveCfg = Release|Any CPU
+		{D41ED609-7093-85D3-E798-6DA0607CA052}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
