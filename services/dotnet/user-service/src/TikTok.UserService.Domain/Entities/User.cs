@@ -1,12 +1,26 @@
 ﻿using TikTok.Shared.Common.Abstractions.Entities;
 using TikTok.UserService.Domain.Enums;
+using TikTok.UserService.Domain.ValueObjects;
 
 namespace TikTok.UserService.Domain.Entities
 {
     public class User : SoftDeletableEntity
     {
-        public string Email { get; set; } = string.Empty;
-        public string? UserName { get; set; }
+        private string _email = string.Empty;
+        private string? _username;
+
+        public string Email
+        {
+            get => _email;
+            set => _email = value;
+        }
+
+        public string? UserName
+        {
+            get => _username;
+            set => _username = value;
+        }
+
         public string? PasswordHash { get; set; }
         public string? FullName { get; set; }
         public string? Bio { get; set; }
@@ -33,6 +47,10 @@ namespace TikTok.UserService.Domain.Entities
 
         // Navigate Properties
         public ICollection<UserRole> UserRoles { get; set; } = [];
+        public UserSettings? Settings { get; set; }
+        public UserStats? Stats { get; set; }
+        public ICollection<Follow> Followers { get; set; } = [];
+        public ICollection<Follow> Following { get; set; } = [];
 
         // Computed property
         public bool IsEmailVerificationTokenValid =>
