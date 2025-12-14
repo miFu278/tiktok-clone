@@ -1,0 +1,260 @@
+syntax = "proto3";
+
+import "common.proto";
+
+option csharp_namespace = "TikTok.Shared.Protos.UserService";
+
+package user_service;
+
+// User Service
+service UserService {
+  // Authentication
+  rpc Register(RegisterRequest) returns (UserResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (common.Empty);
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
+  rpc ForgotPassword(ForgotPasswordRequest) returns (common.Empty);
+  rpc ResetPassword(ResetPasswordRequest) returns (common.Empty);
+  
+  // User Management
+  rpc GetUser(GetUserRequest) returns (UserResponse);
+  rpc GetUserProfile(GetUserProfileRequest) returns (UserProfileResponse);
+  rpc UpdateProfile(UpdateProfileRequest) returns (UserResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (common.Empty);
+  rpc DeleteAccount(DeleteAccountRequest) returns (common.Empty);
+  rpc SearchUsers(SearchUsersRequest) returns (SearchUsersResponse);
+  
+  // Follow
+  rpc FollowUser(FollowRequest) returns (FollowResponse);
+  rpc UnfollowUser(FollowRequest) returns (FollowResponse);
+  rpc GetFollowers(GetFollowersRequest) returns (UserListResponse);
+  rpc GetFollowing(GetFollowingRequest) returns (UserListResponse);
+  rpc IsFollowing(IsFollowingRequest) returns (IsFollowingResponse);
+  
+  // Settings
+  rpc GetUserSettings(GetUserSettingsRequest) returns (UserSettingsResponse);
+  rpc UpdateUserSettings(UpdateUserSettingsRequest) returns (UserSettingsResponse);
+}
+
+// Messages
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  string confirm_password = 3;
+  optional string username = 4;
+  optional string full_name = 5;
+  string date_of_birth = 6; // ISO 8601 format
+  common.Gender gender = 7;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  string expires_at = 3; // ISO 8601 format
+  UserMessage user = 4;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message VerifyEmailRequest {
+  string token = 1;
+}
+
+message VerifyEmailResponse {
+  bool success = 1;
+}
+
+message ForgotPasswordRequest {
+  string email = 1;
+}
+
+message ResetPasswordRequest {
+  string token = 1;
+  string new_password = 2;
+  string confirm_new_password = 3;
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserProfileRequest {
+  string user_id = 1;
+  optional string current_user_id = 2;
+}
+
+message UpdateProfileRequest {
+  string user_id = 1;
+  optional string username = 2;
+  optional string full_name = 3;
+  optional string bio = 4;
+  optional string avatar_url = 5;
+  optional string date_of_birth = 6;
+  optional common.Gender gender = 7;
+  optional bool is_private = 8;
+}
+
+message ChangePasswordRequest {
+  string user_id = 1;
+  string current_password = 2;
+  string new_password = 3;
+  string confirm_new_password = 4;
+}
+
+message DeleteAccountRequest {
+  string user_id = 1;
+  string password = 2;
+}
+
+message SearchUsersRequest {
+  string search_term = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+  optional string current_user_id = 4;
+}
+
+message SearchUsersResponse {
+  repeated UserListItemMessage users = 1;
+}
+
+message FollowRequest {
+  string follower_id = 1;
+  string following_id = 2;
+}
+
+message FollowResponse {
+  bool is_following = 1;
+  int32 followers_count = 2;
+}
+
+message GetFollowersRequest {
+  string user_id = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+  optional string current_user_id = 4;
+}
+
+message GetFollowingRequest {
+  string user_id = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+  optional string current_user_id = 4;
+}
+
+message UserListResponse {
+  repeated UserListItemMessage users = 1;
+}
+
+message IsFollowingRequest {
+  string follower_id = 1;
+  string following_id = 2;
+}
+
+message IsFollowingResponse {
+  bool is_following = 1;
+}
+
+message GetUserSettingsRequest {
+  string user_id = 1;
+}
+
+message UpdateUserSettingsRequest {
+  string user_id = 1;
+  bool is_private_account = 2;
+  bool allow_comments = 3;
+  bool allow_duet = 4;
+  bool allow_stitch = 5;
+  bool allow_download = 6;
+  bool push_notifications_enabled = 7;
+  bool email_notifications_enabled = 8;
+  bool notify_on_likes = 9;
+  bool notify_on_comments = 10;
+  bool notify_on_follows = 11;
+  bool notify_on_mentions = 12;
+  string preferred_language = 13;
+  string preferred_content_region = 14;
+}
+
+message UserSettingsResponse {
+  bool is_private_account = 1;
+  bool allow_comments = 2;
+  bool allow_duet = 3;
+  bool allow_stitch = 4;
+  bool allow_download = 5;
+  bool push_notifications_enabled = 6;
+  bool email_notifications_enabled = 7;
+  bool notify_on_likes = 8;
+  bool notify_on_comments = 9;
+  bool notify_on_follows = 10;
+  bool notify_on_mentions = 11;
+  string preferred_language = 12;
+  string preferred_content_region = 13;
+}
+
+// Response Messages
+message UserResponse {
+  UserMessage user = 1;
+}
+
+message UserProfileResponse {
+  UserProfileMessage profile = 1;
+}
+
+// Data Messages
+message UserMessage {
+  string id = 1;
+  string email = 2;
+  optional string username = 3;
+  optional string full_name = 4;
+  optional string bio = 5;
+  optional string avatar_url = 6;
+  string date_of_birth = 7;
+  common.Gender gender = 8;
+  bool email_verified = 9;
+  bool is_private = 10;
+  bool is_active = 11;
+  string created_at = 12;
+  optional UserStatsMessage stats = 13;
+  repeated string roles = 14;
+}
+
+message UserProfileMessage {
+  string id = 1;
+  optional string username = 2;
+  optional string full_name = 3;
+  optional string bio = 4;
+  optional string avatar_url = 5;
+  common.Gender gender = 6;
+  bool is_private = 7;
+  bool is_following = 8;
+  bool is_followed_by = 9;
+  UserStatsMessage stats = 10;
+}
+
+message UserListItemMessage {
+  string id = 1;
+  optional string username = 2;
+  optional string full_name = 3;
+  optional string avatar_url = 4;
+  bool is_following = 5;
+  int32 followers_count = 6;
+}
+
+message UserStatsMessage {
+  int32 followers_count = 1;
+  int32 following_count = 2;
+  int32 videos_count = 3;
+  int32 total_likes_received = 4;
+}

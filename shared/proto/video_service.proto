@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+import "common.proto";
+
+option go_package = "github.com/tiktok-clone/video-service/internal/delivery/grpc/proto;proto";
+
+package video_service;
+
+service VideoService {
+  rpc UploadVideo(UploadVideoRequest) returns (UploadVideoResponse);
+  rpc GetVideo(GetVideoRequest) returns (VideoResponse);
+  rpc GetVideosByUser(GetVideosByUserRequest) returns (VideoListResponse);
+  rpc UpdateVideo(UpdateVideoRequest) returns (VideoResponse);
+  rpc DeleteVideo(DeleteVideoRequest) returns (common.Empty);
+  rpc LikeVideo(LikeVideoRequest) returns (LikeVideoResponse);
+  rpc UnlikeVideo(LikeVideoRequest) returns (LikeVideoResponse);
+  rpc GetVideoStats(GetVideoStatsRequest) returns (VideoStatsResponse);
+  rpc IncrementViewCount(IncrementViewCountRequest) returns (common.Empty);
+}
+
+message UploadVideoRequest {
+  string user_id = 1;
+  string title = 2;
+  string description = 3;
+  bytes video_data = 4;
+  bytes thumbnail_data = 5;
+  repeated string tags = 6;
+  bool is_private = 7;
+  bool allow_comments = 8;
+  bool allow_duet = 9;
+  bool allow_stitch = 10;
+}
+
+message UploadVideoResponse {
+  string video_id = 1;
+  string status = 2;
+  string message = 3;
+}
+
+message GetVideoRequest {
+  string video_id = 1;
+  optional string user_id = 2;
+}
+
+message GetVideosByUserRequest {
+  string user_id = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+}
+
+message UpdateVideoRequest {
+  string video_id = 1;
+  string user_id = 2;
+  optional string title = 3;
+  optional string description = 4;
+  optional bool is_private = 5;
+  optional bool allow_comments = 6;
+  optional bool allow_duet = 7;
+  optional bool allow_stitch = 8;
+}
+
+message DeleteVideoRequest {
+  string video_id = 1;
+  string user_id = 2;
+}
+
+message LikeVideoRequest {
+  string video_id = 1;
+  string user_id = 2;
+}
+
+message LikeVideoResponse {
+  bool is_liked = 1;
+  int64 likes_count = 2;
+}
+
+message GetVideoStatsRequest {
+  string video_id = 1;
+}
+
+message IncrementViewCountRequest {
+  string video_id = 1;
+  string user_id = 2;
+}
+
+message VideoResponse {
+  VideoMessage video = 1;
+}
+
+message VideoListResponse {
+  repeated VideoMessage videos = 1;
+  int32 total_count = 2;
+}
+
+message VideoMessage {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string description = 4;
+  string video_url = 5;
+  string thumbnail_url = 6;
+  int32 duration = 7;
+  repeated string tags = 8;
+  bool is_private = 9;
+  bool allow_comments = 10;
+  bool allow_duet = 11;
+  bool allow_stitch = 12;
+  string status = 13;
+  VideoStatsMessage stats = 14;
+  string created_at = 15;
+  string updated_at = 16;
+}
+
+message VideoStatsResponse {
+  VideoStatsMessage stats = 1;
+}
+
+message VideoStatsMessage {
+  int64 views_count = 1;
+  int64 likes_count = 2;
+  int64 comments_count = 3;
+  int64 shares_count = 4;
+}
