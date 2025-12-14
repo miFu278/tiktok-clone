@@ -22,28 +22,24 @@ namespace TikTok.UserService.Infrastructure.Persistence
             {
                 new Role
                 {
-                    Id = Guid.NewGuid(),
                     Name = "User",
                     Description = "Default user role",
                     IsActive = true
                 },
                 new Role
                 {
-                    Id = Guid.NewGuid(),
                     Name = "Creator",
                     Description = "Content creator with verified badge",
                     IsActive = true
                 },
                 new Role
                 {
-                    Id = Guid.NewGuid(),
                     Name = "Moderator",
                     Description = "Content moderator",
                     IsActive = true
                 },
                 new Role
                 {
-                    Id = Guid.NewGuid(),
                     Name = "Admin",
                     Description = "System administrator",
                     IsActive = true
